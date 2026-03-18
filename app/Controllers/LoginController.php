@@ -43,6 +43,7 @@ class LoginController {
                         "lastname" => $user["lastname"],
                         "firstname" => $user["firstname"],
                         "email" => $user["email"],
+                        "isAdmin" => $user["is_admin"],
                         "createdAt" => $user["created_at"]
                     )
                 );

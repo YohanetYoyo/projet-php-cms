@@ -5,6 +5,7 @@ class User {
     private $firstname;
     private $email;
     private $pwd;
+    private $isAdmin;
     private $createdAt;
 
     public function __construct(array $donnees) {
@@ -58,6 +59,14 @@ class User {
 
     public function setPwd($pwd): void {
         $this->pwd = $pwd;
+    }
+
+    public function getIsAdmin() {
+        return $this->isAdmin;
+    }
+
+    public function setIsAdmin($isAdmin): void {
+        $this->isAdmin = $isAdmin;
     }
 
     public function getCreatedAt() {
