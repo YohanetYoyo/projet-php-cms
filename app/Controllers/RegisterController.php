@@ -63,7 +63,8 @@ class RegisterController {
                     "firstname" => $firstname,
                     "email" => $email,
                     "pwd" => password_hash($_POST["pwd"], PASSWORD_DEFAULT),
-                    "created_at" => date("Y-m-d H:i:s")
+                    "isAdmin" => 0,
+                    "createdAt" => date("Y-m-d H:i:s")
                 )));
                 if ($check) {
                     header("Location: ?page=login");
