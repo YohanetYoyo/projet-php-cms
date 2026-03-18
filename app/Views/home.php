@@ -8,8 +8,11 @@ if (!isset($_SESSION['user'])) {
     <html lang="fr">
     <head>
         <title>Accueil</title>
+        <link rel="stylesheet" href="../../style.css">
     </head>
     <body>
+    <header>
+        <h1>Bienvenue, <?= $_SESSION['user']->getLastname(). " ". $_SESSION['user']->getFirstname(). " !" ?></h1>
     <?php if (!empty($errors)):
         foreach ($errors as $error):
             ?>
@@ -18,7 +21,7 @@ if (!isset($_SESSION['user'])) {
         endforeach;
     endif;
     ?>
-    <h1>Bienvenue, <?= $_SESSION['user']->getLastname(). " ". $_SESSION['user']->getFirstname(). " !" ?></h1>
+    </header>
     <form method="post" action="?page=home">
         <button type="submit">Déconnexion</button>
     </form>

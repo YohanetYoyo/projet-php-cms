@@ -2,8 +2,11 @@
 <html lang="fr">
 <head>
     <title>Inscription</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
+<header>
+    <h1>Inscription</h1>
     <?php if (!empty($errors)):
         foreach ($errors as $error):
     ?>
@@ -12,6 +15,7 @@
         endforeach;
     endif;
     ?>
+</header>
     <form method="post" action="?page=register">
         <table>
             <tr>

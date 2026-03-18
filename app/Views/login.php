@@ -2,8 +2,11 @@
 <html lang="fr">
 <head>
     <title>Connexion</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
+<header>
+    <h1>Connexion</h1>
     <?php if (!empty($errors)):
         foreach ($errors as $error):
             ?>
@@ -12,12 +15,31 @@
         endforeach;
     endif;
     ?>
+</header>
     <form method="post" action="?page=login">
-        <label for="email">Email:</label>
-        <input id="email" type="email" name="email" value="<?= $email ?? "" ?>" required>
-        <label for="pwd">Mot de passe:</label>
-        <input id="pwd" type="password" name="pwd" required>
-        <button type="submit">Connexion</button>
+        <table>
+            <tr>
+                <td>
+                    <label for="email">Email :</label>
+                </td>
+                <td>
+                    <input id="email" type="email" name="email" value="<?= $email ?? "" ?>" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="pwd">Mot de passe :</label>
+                </td>
+                <td>
+                    <input id="pwd" type="password" name="pwd" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Connexion</button>
+                </td>
+            </tr>
+        </table>
     </form>
     <br>
     <a href="?page=register">Pas de compte ? Cliquez ici pour vous inscrire</a>
