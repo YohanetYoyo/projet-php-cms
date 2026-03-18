@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <title>Gestion des utilisateurs</title>
     <link rel="stylesheet" href="../../../style.css">
     <script>
