@@ -19,4 +19,6 @@ $router->add('GET','account', 'AccountController/show');
 $router->add('POST','account/update', 'AccountController/update');
 $router->add('POST','account/delete', 'AccountController/delete');
 
+$router->add('GET','manage-users', 'ManageUsersController/show');
+
 $router->patch();

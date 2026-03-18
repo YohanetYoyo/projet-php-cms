@@ -36,6 +36,11 @@ class UserRepository {
         $query->execute(["id" => $id]);
     }
 
+    public function getUsers(): array {
+        $query = $this->pdo->getConnection()->query("SELECT id_user, lastname, firstname, email, is_admin, created_at FROM Users");
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getUserByEmail($email): array {
         $query = $this->pdo->getConnection()->prepare("SELECT id_user, lastname, firstname, email, is_admin, created_at FROM Users WHERE email = :email");
         $query->execute(["email" => $email]);
