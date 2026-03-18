@@ -54,6 +54,8 @@ class RegisterController {
                 !preg_match("#[-.;?,!]#", $_POST["pwd"])
             ){
                 $errors[] = "Votre mot de passe est incorrect. Il doit posséder 8 caractères dont 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial (.;?,-!)";
+            } else if ($_POST["pwd"] != $_POST["confirmPwd"]) {
+                $errors[] = "Les mots de passe ne correspondent pas !";
             }
             if(count($errors) > 0) {
                 require __DIR__ . '/../views/register.php';

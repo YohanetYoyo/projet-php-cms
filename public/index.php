@@ -16,6 +16,7 @@ $router->add('POST','register', 'RegisterController/register');
 $router->add('POST','home', 'HomeController/logout');
 
 $router->add('GET','account', 'AccountController/show');
+$router->add('POST','account/update', 'AccountController/update');
 $router->add('POST','account/delete', 'AccountController/delete');
 
 $router->patch();
