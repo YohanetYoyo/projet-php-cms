@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Accueil</title>
+    <title>Gestion des utilisateurs</title>
     <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
