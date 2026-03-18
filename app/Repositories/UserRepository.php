@@ -21,6 +21,11 @@ class UserRepository {
         return $this->pdo->getConnection()->lastInsertId();
     }
 
+    public function deleteUser($id): void {
+        $query = $this->pdo->getConnection()->prepare("DELETE FROM Users WHERE id_user = :id");
+        $query->execute(["id" => $id]);
+    }
+
     public function getUserByEmail($email): array {
         $query = $this->pdo->getConnection()->prepare("SELECT id_user, lastname, firstname, email, is_admin, created_at FROM Users WHERE email = :email");
         $query->execute(["email" => $email]);
