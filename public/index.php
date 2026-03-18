@@ -21,6 +21,7 @@ $router->add('POST','account/delete', 'AccountController/delete');
 
 $router->add('GET','manage-users', 'ManageUsersController/show');
 $router->add('POST','manage-users/update', 'ManageUsersController/update');
+$router->add('POST','manage-users/delete', 'ManageUsersController/delete');
 
 $router->add('GET','create-user', 'CreateUserController/show');
 $router->add('POST','create-user', 'CreateUserController/create');

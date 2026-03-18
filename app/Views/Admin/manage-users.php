@@ -2,7 +2,16 @@
 <html lang="fr">
 <head>
     <title>Gestion des utilisateurs</title>
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../../style.css">
+    <script>
+        function deleteAccount(deletionForm) {
+            if (confirm("Êtes-vous sûr de vouloir supprimer ce compte ?") === true) {
+                document.getElementById(deletionForm).submit();
+            } else {
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
 <?php
@@ -28,7 +37,7 @@ if (!isset($_SESSION['user'])) {
                 <th>Email</th>
                 <th>Admin ?</th>
                 <th>Créé le</th>
-                <th>Actions</th>
+                <th colspan="2">Actions</th>
             </tr>
             <?php
                 foreach($users as $user):
@@ -44,6 +53,12 @@ if (!isset($_SESSION['user'])) {
                     <form method="post" action="?page=manage-users/update">
                         <input type="hidden" name="idUser" value="<?= $user['id_user']?> ?>">
                         <button type="submit">Modifier</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="?page=manage-users/delete">
+                        <input type="hidden" name="idUser" value="<?= $user['id_user']?> ?>">
+                        <button onclick="return deleteAccount('deletionForm')" type="submit">Supprimer</button>
                     </form>
                 </td>
             </tr>

@@ -18,4 +18,9 @@ class ManageUsersController {
         $user = $this->userRepository->getUserById($_POST["idUser"]);
         require __DIR__ . '/../views/Admin/modify-user.php';
     }
+
+    public function delete(): void {
+        $this->userRepository->deleteUser($_POST["idUser"]);
+        $this->show();
+    }
 }
