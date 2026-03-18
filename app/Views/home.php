@@ -19,10 +19,23 @@ if (!isset($_SESSION['user'])) {
         <?php
         if ($_SESSION['user']->getIsAdmin() == 1):
         ?>
-        <a href="?page=manage-users"><button type="button">Gestion des utilisateurs</button></a>
+        <table>
+            <tr>
+                <td><a href="?page=manage-users"><button type="button">Gestion des utilisateurs</button></a></td>
+            </tr>
+        </table>
+        <br>
         <?php
         endif;
         ?>
+        <table>
+            <tr>
+                <td><a href="?page=create-page"><button type="button">Créer une page</button></a></td>
+                <td><a href="#"><button type="button">Modifier une page</button></a></td>
+                <td><a href="#"><button type="button">Supprimer une page</button></a></td>
+                <td><a href="#"><button type="button">Publier/Dépublier</button></a></td>
+            </tr>
+        </table>
     </main>
     <br>
     <form method="post" action="?page=home">
