@@ -28,7 +28,7 @@ if (!isset($_SESSION['user'])) {
                 <th>Email</th>
                 <th>Admin ?</th>
                 <th>Créé le</th>
-
+                <th>Actions</th>
             </tr>
             <?php
                 foreach($users as $user):
@@ -40,6 +40,12 @@ if (!isset($_SESSION['user'])) {
                 <td><?= $user['email']?></td>
                 <td><?= $user['is_admin']?></td>
                 <td><?= $user['created_at']?></td>
+                <td>
+                    <form method="post" action="?page=manage-users/update">
+                        <input type="hidden" name="idUser" value="<?= $user['id_user']?> ?>">
+                        <button type="submit">Modifier</button>
+                    </form>
+                </td>
             </tr>
             <?php
                   endif;

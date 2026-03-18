@@ -51,6 +51,7 @@ class AccountController {
                     "lastname" => $lastname,
                     "firstname" => $firstname,
                     "email" => $email,
+                    "isAdmin" => 0,
                     "idUser" => $_SESSION['user']->getIdUser()
                 )));
                 $user = $this->userRepository->getUserByEmail($email);

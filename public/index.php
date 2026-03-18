@@ -20,8 +20,11 @@ $router->add('POST','account/update', 'AccountController/update');
 $router->add('POST','account/delete', 'AccountController/delete');
 
 $router->add('GET','manage-users', 'ManageUsersController/show');
+$router->add('POST','manage-users/update', 'ManageUsersController/update');
 
 $router->add('GET','create-user', 'CreateUserController/show');
 $router->add('POST','create-user', 'CreateUserController/create');
+
+$router->add('POST','modify-user', 'ModifyUserController/update');
 
 $router->patch();

@@ -22,11 +22,12 @@ class UserRepository {
     }
 
     public function updateUser(User $user): void {
-        $query = $this->pdo->getConnection()->prepare("UPDATE Users SET lastname = :lastname, firstname = :firstname, email = :email WHERE id_user = :id_user");
+        $query = $this->pdo->getConnection()->prepare("UPDATE Users SET lastname = :lastname, firstname = :firstname, email = :email, is_admin = :is_admin WHERE id_user = :id_user");
         $query->execute(array(
             "lastname" => $user->getLastname(),
             "firstname" => $user->getFirstname(),
             "email" => $user->getEmail(),
+            "is_admin" => $user->getIsAdmin(),
             "id_user" => $user->getIdUser()
         ));
     }
@@ -39,6 +40,12 @@ class UserRepository {
     public function getUsers(): array {
         $query = $this->pdo->getConnection()->query("SELECT id_user, lastname, firstname, email, is_admin, created_at FROM Users");
         return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getUserById($id): array {
+        $query = $this->pdo->getConnection()->prepare("SELECT id_user, lastname, firstname, email, is_admin, created_at FROM Users WHERE id_user = :id");
+        $query->execute(["id" => $id]);
+        return $query->fetchAll(PDO::FETCH_ASSOC)[0];
     }
 
     public function getUserByEmail($email): array {
