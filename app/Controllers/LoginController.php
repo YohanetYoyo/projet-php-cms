@@ -46,7 +46,7 @@ class LoginController {
                         "createdAt" => $user["created_at"]
                     )
                 );
-                header("Location: ?page=home");
+                header("Location: ?page=index");
                 exit;
             }
         }
