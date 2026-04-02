@@ -70,7 +70,7 @@ class CreateUserController {
                     "createdAt" => date("Y-m-d H:i:s")
                 )));
                 if ($check) {
-                    header("Location: ?page=manage-users");
+                    header("Location: /manage-users");
                     exit;
                 }
             }

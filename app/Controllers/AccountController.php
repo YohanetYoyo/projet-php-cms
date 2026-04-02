@@ -72,7 +72,7 @@ class AccountController {
     public function delete() {
         $this->userRepository->deleteUser($_SESSION['user']->getIdUser());
         session_destroy();
-        header("Location: ?page=login");
+        header("Location: /login");
         exit;
     }
 }

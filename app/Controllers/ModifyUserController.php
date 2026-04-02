@@ -54,7 +54,7 @@ class ModifyUserController {
                     "isAdmin" => $isAdmin,
                     "idUser" => $idUser
                 )));
-                header("Location: ?page=manage-users");
+                header("Location: /manage-users");
                 exit;
             }
         }

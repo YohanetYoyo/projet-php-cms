@@ -17,7 +17,7 @@
     endif;
     ?>
 </header>
-    <form method="post" action="?page=register">
+    <form method="post" action="/register">
         <table>
             <tr>
                 <td>
@@ -67,6 +67,6 @@
         </table>
     </form>
     <br>
-    <a href="?page=login">Déjà un compte ? Cliquez ici pour vous connecter</a>
+    <a href="/login">Déjà un compte ? Cliquez ici pour vous connecter</a>
 </body>
 </html>

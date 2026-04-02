@@ -18,18 +18,18 @@
 <?php
 if (!isset($_SESSION['user'])) {
     echo "Vous n'êtes pas connecté !";
-    echo "<a href='?page=login'><button type='button'>Cliquez ici pour vous connecter</button><a/>";
+    echo "<a href='/login'><button type='button'>Cliquez ici pour vous connecter</button><a/>";
 } else {
     if ($_SESSION['user']->getIsAdmin() != 1) {
         echo "Vous n'êtes pas autorisé à visionner cette page !";
-        echo "<a href='?page=index'><button type='button'>Cliquez ici pour retourner à l'accueil</button><a/>";
+        echo "<a href='/index'><button type='button'>Cliquez ici pour retourner à l'accueil</button><a/>";
     } else {
     ?>
     <header>
         <h1>Gestion des utilisateurs</h1>
     </header>
     <main>
-        <a href="?page=create-user"><button type="button">Créer un utilisateur</button></a>
+        <a href="/create-user"><button type="button">Créer un utilisateur</button></a>
         <br><br>
         <table border="1px">
             <tr>
@@ -51,13 +51,13 @@ if (!isset($_SESSION['user'])) {
                 <td><?= $user['is_admin']?></td>
                 <td><?= $user['created_at']?></td>
                 <td>
-                    <form method="post" action="?page=manage-users/update">
+                    <form method="post" action="/manage-users/update">
                         <input type="hidden" name="idUser" value="<?= $user['id_user']?> ?>">
                         <button type="submit">Modifier</button>
                     </form>
                 </td>
                 <td>
-                    <form method="post" action="?page=manage-users/delete">
+                    <form method="post" action="/manage-users/delete">
                         <input type="hidden" name="idUser" value="<?= $user['id_user']?> ?>">
                         <button onclick="return deleteAccount('deletionForm')" type="submit">Supprimer</button>
                     </form>
@@ -70,7 +70,7 @@ if (!isset($_SESSION['user'])) {
         </table>
     </main>
     <br>
-    <a href="?page=index"><button type="button">Retour vers l'accueil</button></a>
+    <a href="/index"><button type="button">Retour vers l'accueil</button></a>
     <?php
     }
 }
