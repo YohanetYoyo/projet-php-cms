@@ -15,6 +15,14 @@ RUN apt-get update && apt-get install -y \
     zip \
     opcache
 
+RUN a2enmod rewrite
+
+RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
+
+RUN echo '<Directory /var/www/html/public>\n\
+    AllowOverride All\n\
+</Directory>' >> /etc/apache2/apache2.conf
+
 # Copier un php.ini personnalisé si besoin (monté via docker-compose)
 # WORKDIR /var/www/html
 

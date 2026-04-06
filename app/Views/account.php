@@ -32,7 +32,7 @@ if (!isset($_SESSION['user'])) {
         endforeach;
     endif;
     ?>
-    <form method="post" action="?page=account/update">
+    <form method="post" action="/account/update">
         <table>
             <tr>
                 <td>
@@ -66,11 +66,11 @@ if (!isset($_SESSION['user'])) {
         </table>
     </form>
     <br>
-    <form method="post" action="?page=account/delete" id="deletionForm">
+    <form method="post" action="/account/delete" id="deletionForm">
         <button onclick="return deleteAccount('deletionForm')" style="background-color: lightcoral;">Supprimer mon compte</button>
     </form>
     <br>
-    <a href="?page=index"><button type="button">Retour vers l'accueil</button></a>
+    <a href="/index"><button type="button">Retour vers l'accueil</button></a>
     <?php
 }
 ?>

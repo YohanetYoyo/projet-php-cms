@@ -8,7 +8,7 @@ class Router {
     }
 
     public function patch(): void {
-        $page = $_GET['page'] ?? 'index';
+        $page = trim($_GET['page'] ?? 'index', '/');
         $method = $_SERVER['REQUEST_METHOD'];
 
         if (!isset($this->routes[$method][$page])) {
@@ -16,12 +16,12 @@ class Router {
             return;
         }
 
-        list($controller, $method) = explode('/', $this->routes[$method][$page]);
+        list($controller, $action) = explode('/', $this->routes[$method][$page]);
 
         require_once __DIR__.'/../app/controllers/'.$controller.'.php';
 
         $controller = new $controller();
-        $controller->$method();
+        $controller->$action();
     }
 
 }

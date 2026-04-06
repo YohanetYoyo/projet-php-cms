@@ -69,7 +69,7 @@ class RegisterController {
                     "createdAt" => date("Y-m-d H:i:s")
                 )));
                 if ($check) {
-                    header("Location: ?page=login");
+                    header("Location: /login");
                     exit;
                 }
             }
