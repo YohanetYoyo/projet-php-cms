@@ -30,7 +30,7 @@ class PageController {
             $content = trim($_POST["content"]);
             $slug = strtolower(trim($_POST["slug"]));
             $status = trim($_POST["status"]);
-            $author = $_POST["author"] ?? 'Admin';
+            $author = $_SESSION['user']->getIdUser(); 
 
             if (strlen($title) < 3) {
                 $errors[] = "Le titre doit faire au moins 3 caractères";
@@ -97,7 +97,7 @@ class PageController {
             $content = trim($_POST["content"]);
             $slug = strtolower(trim($_POST["slug"]));
             $status = trim($_POST["status"]);
-            $author = $_POST["author"] ?? 'Admin';
+            $author = $_SESSION['user']->getIdUser(); 
 
             $this->pageRepository->update(new Page([
                 "idPage" => $idPage,
@@ -174,7 +174,7 @@ class PageController {
                     "content" => $page['content'],
                     "slug" => $page['slug'],
                     "status" => $_POST["status"],
-                    "author" => $page['author']
+                    "author" => $page['author'] 
                 ]));
             }
             header("Location: /home");

@@ -94,4 +94,14 @@ class PageRepository {
         $query->execute(["status" => $status]);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Récupère les pages par auteur
+    // Paramètre: $author (ID ou nom de l'auteur)
+    public function getByAuthor($author): array {
+        $query = $this->pdo->getConnection()->prepare(
+            "SELECT id_page, title, content, slug, status, author, created_at FROM Pages WHERE author = :author ORDER BY created_at DESC"
+        );
+        $query->execute(["author" => $author]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

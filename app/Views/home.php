@@ -29,12 +29,42 @@ if (!isset($_SESSION['user'])) {
         <?php
         endif;
         ?>
+        </br>
+        <h2>Vos pages</h2>
+        <?php if (!empty($pages)): ?>
+            <table border="1" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Slug</th>
+                        <th>Statut</th>
+                        <th>Créée le</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($pages as $page): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($page['title']) ?></td>
+                            <td><?= htmlspecialchars($page['slug']) ?></td>
+                            <td><?= htmlspecialchars($page['status']) ?></td>
+                            <td><?= htmlspecialchars($page['created_at']) ?></td>
+                            <td>
+                                <a href="/modify-page?id=<?= htmlspecialchars($page['id_page']) ?>"><button type="button">Modifier</button></a>
+                                <a href="/delete-page?id=<?= htmlspecialchars($page['id_page']) ?>"><button type="button">Supprimer</button></a>
+                                <a href="/publish-page?id=<?= htmlspecialchars($page['id_page']) ?>"><button type="button">Publier</button></a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>Vous n'avez pas encore créé de page.</p>
+        <?php endif; ?>
+        <br>
         <table>
             <tr>
-                <td><a href="/create-page"><button type="button">Créer une page</button></a></td>
-                <td><a href="/modify-page?id=1"><button type="button">Modifier une page</button></a></td>
-                <td><a href="/delete-page?id=1"><button type="button">Supprimer une page</button></a></td>
-                <td><a href="/publish-page?id=1"><button type="button">Publier/Dépublier</button></a></td>
+                <td><a href="/create-page"><button type="button">Créer une nouvelle page</button></a></td>
             </tr>
         </table>
     </main>
