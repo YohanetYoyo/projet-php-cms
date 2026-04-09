@@ -1,104 +1,97 @@
 <?php
+require_once __DIR__ . '/../../config/Database.php';
 
-namespace App\Repositories;
+class PageRepository {
+    private $pdo;
 
-use App\Models\Page;
-use Database;
-
-class PageRepository
-{
-    private \PDO $db;
-
-    public function __construct()
-    {
-        $this->db = Database::getInstance()->getConnection();
+    public function __construct() {
+        $this->pdo = new Database();
     }
 
-    //Récupérer toutes les pages
-    public function findAll(): array
-    {
-        $stmt = $this->db->prepare("SELECT * FROM pages ORDER BY created_at DESC");
-        $stmt->execute();
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
-    //Récupérer une page par son ID
-
-    public function findById(int $id): ?array
-    {
-        $stmt = $this->db->prepare("SELECT * FROM pages WHERE id = :id");
-        $stmt->execute(['id' => $id]);
-        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return $result ?: null;
-    
-    }
-
-    //Récuperer une page par son slug
-
-    public function findBySlug(string $slug): ?array
-    {
-        $stmt = $this->db->prepare("SELECT * FROM pages WHERE slug = :slug");
-        $stmt->execute(['slug' => $slug]);
-        $resultat = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return $resultat ?: null;
-    }
-
-    //Créer une nouvelle page
-
-    public function create(array $data) : bool
-    {
-        $stmt = $this->db->prepare("
-        INSERT INTO pages (title, slug, content, created_at, updated_at)
-        VAlUES (:title, :slug, :content, NOW(), NOW())
-        ");
-        return $stmt->execute([
-            ':title'  => $data['title'],
-            ':slug'   => $data['slug'],
-            ':content' => $data['content']
-            ]);
-    }
-
-    //Mettre à jour une page existante
-
-    public function update(int $id, array $data) : bool
-    {
-        $stmt = $this->db->prepare("
-        UPDATE pages
-        SET title = :title, slug = :slug, content = :content, update_at =NOW()
-        WHERE id = :id
-        ");
-        return $stmt->execute([
-            ':title' => $data['title'],
-            ':slug' => $data['slug'],
-            ':content' => $data['content'],
-            ':id' => $id
+    // Insère une nouvelle page
+    // Paramètre: $page (objet Page)
+    public function insert(Page $page): void {
+        $query = $this->pdo->getConnection()->prepare(
+            "INSERT INTO Pages (title, content, slug, status, author, created_at) VALUES (:title, :content, :slug, :status, :author, :created_at)"
+        );
+        $query->execute([
+            "title" => $page->getTitle(),
+            "content" => $page->getContent(),
+            "slug" => $page->getSlug(),
+            "status" => $page->getStatus(),
+            "author" => $page->getAuthor(),
+            "created_at" => $page->getCreatedAt()
         ]);
     }
 
-    //Supprimer une page
-
-    public function delete(int $id) : bool
-    {
-        $stmt = $this->db->prepare("DELETE FROM pages WHERE id = :id");
-        return $stmt->execute([':id' => $id]);
+    // Met à jour une page
+    // Paramètre: $page (objet Page)
+    public function update(Page $page): void {
+        $query = $this->pdo->getConnection()->prepare(
+            "UPDATE Pages SET title = :title, content = :content, slug = :slug, status = :status, author = :author WHERE id_page = :id_page"
+        );
+        $query->execute([
+            "title" => $page->getTitle(),
+            "content" => $page->getContent(),
+            "slug" => $page->getSlug(),
+            "status" => $page->getStatus(),
+            "author" => $page->getAuthor(),
+            "id_page" => $page->getIdPage()
+        ]);
     }
 
-    //Vérifier l'existence d'une page par son slug
-
-    public function slugExists(string $slug, ?int $execludeId = null) : bool
-    {
-        $sql = "SELECT COUNT(*) FROM pages WHERE slug = :slug";
-        if ($execludeId) {
-            $sql = " AND id != :id";
-        }
-        $stmt = $this->db->prepare($sql);
-        $params = [':slug' => $slug];
-        if ($execludeId) {
-            $params[':id'] = $execludeId;
-        }
-        $stmt->execute($params);
-        return $stmt->fetchColumn() > 0;
-    
+    // Supprime une page
+    // Paramètre: $id (ID de la page)
+    public function delete(int $id): void {
+        $query = $this->pdo->getConnection()->prepare(
+            "DELETE FROM Pages WHERE id_page = :id"
+        );
+        $query->execute(["id" => $id]);
     }
 
+    // Récupère toutes les pages
+    public function getAll(): array {
+        $query = $this->pdo->getConnection()->query(
+            "SELECT id_page, title, content, slug, status, author, created_at FROM Pages ORDER BY created_at DESC"
+        );
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Récupère une page par son ID
+    // Paramètre: $id (ID de la page)
+    public function getById(int $id): ?array {
+        $query = $this->pdo->getConnection()->prepare(
+            "SELECT id_page, title, content, slug, status, author, created_at FROM Pages WHERE id_page = :id"
+        );
+        $query->execute(["id" => $id]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($result)) {
+            return $result[0];
+        }
+        return null;
+    }
+
+    // Récupère une page par son slug
+    // Paramètre: $slug (slug de la page)
+    public function getBySlug(string $slug): ?array {
+        $query = $this->pdo->getConnection()->prepare(
+            "SELECT id_page, title, content, slug, status, author, created_at FROM Pages WHERE slug = :slug"
+        );
+        $query->execute(["slug" => $slug]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        if (!empty($result)) {
+            return $result[0];
+        }
+        return null;
+    }
+
+    // Récupère les pages par statut
+    // Paramètre: $status (statut de la page)
+    public function getByStatus(string $status): array {
+        $query = $this->pdo->getConnection()->prepare(
+            "SELECT id_page, title, content, slug, status, author, created_at FROM Pages WHERE status = :status ORDER BY created_at DESC"
+        );
+        $query->execute(["status" => $status]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

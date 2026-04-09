@@ -32,9 +32,9 @@ if (!isset($_SESSION['user'])) {
         <table>
             <tr>
                 <td><a href="/create-page"><button type="button">Créer une page</button></a></td>
-                <td><a href="#"><button type="button">Modifier une page</button></a></td>
-                <td><a href="#"><button type="button">Supprimer une page</button></a></td>
-                <td><a href="#"><button type="button">Publier/Dépublier</button></a></td>
+                <td><a href="/modify-page?id=1"><button type="button">Modifier une page</button></a></td>
+                <td><a href="/delete-page?id=1"><button type="button">Supprimer une page</button></a></td>
+                <td><a href="/publish-page?id=1"><button type="button">Publier/Dépublier</button></a></td>
             </tr>
         </table>
     </main>

@@ -14,6 +14,7 @@ $router->add('GET','register', 'RegisterController/show');
 $router->add('POST','register', 'RegisterController/register');
 
 $router->add('POST','home', 'HomeController/logout');
+$router->add('GET','home', 'HomeController/show');
 
 $router->add('GET','account', 'AccountController/show');
 $router->add('POST','account/update', 'AccountController/update');
@@ -27,5 +28,17 @@ $router->add('GET','create-user', 'CreateUserController/show');
 $router->add('POST','create-user', 'CreateUserController/create');
 
 $router->add('POST','modify-user', 'ModifyUserController/update');
+
+$router->add('GET','create-page', 'PageController/showCreate');
+$router->add('POST','create-page', 'PageController/create');
+
+$router->add('GET','delete-page', 'PageController/showDelete');
+$router->add('POST','delete-page', 'PageController/delete');
+
+$router->add('GET','modify-page', 'PageController/showUpdate');
+$router->add('POST','modify-page', 'PageController/update');
+
+$router->add('GET','publish-page', 'PageController/showPublish');
+$router->add('POST','publish-page', 'PageController/publish');
 
 $router->patch();
