@@ -44,5 +44,7 @@
     </form>
     <br>
     <a href="/register">Pas de compte ? Cliquez ici pour vous inscrire</a>
+    <br>
+    <a href="/forgot-password">Mot de passe oublié ?</a>
 </body>
 </html>

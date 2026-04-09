@@ -10,6 +10,12 @@ $router->add('GET','index', 'IndexController/index');
 $router->add('GET','login', 'LoginController/show');
 $router->add('POST','login', 'LoginController/login');
 
+$router->add('GET','forgot-password', 'ForgotPasswordController/show');
+$router->add('POST','forgot-password', 'ForgotPasswordController/request');
+
+$router->add('GET','reset-password', 'ForgotPasswordController/showReset');
+$router->add('POST','reset-password', 'ForgotPasswordController/reset');
+
 $router->add('GET','register', 'RegisterController/show');
 $router->add('POST','register', 'RegisterController/register');
 

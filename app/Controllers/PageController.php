@@ -59,7 +59,7 @@ class PageController {
                     "author" => $author,
                     "createdAt" => date("Y-m-d H:i:s")
                 ]));
-                header("Location: /home");
+                header("Location: /index");
                 exit;
             }
         }
@@ -108,7 +108,7 @@ class PageController {
                 "author" => $author
             ]));
 
-            header("Location: /home");
+            header("Location: /index");
             exit;
         }
     }
@@ -137,7 +137,7 @@ class PageController {
             !empty($_POST["id_page"])
         ) {
             $this->pageRepository->delete((int)$_POST["id_page"]);
-            header("Location: /home");
+            header("Location: /index");
             exit;
         }
     }
@@ -177,7 +177,7 @@ class PageController {
                     "author" => $page['author'] 
                 ]));
             }
-            header("Location: /home");
+            header("Location: /index");
             exit;
         }
     }
