@@ -8,7 +8,11 @@
   :root {
     @each $name, $value in v.$colors {
       --#{$name}: #{$value};
-      --#{$name}-hover: #{color.scale($value, $lightness: 20%)};
+      @if (color.lightness($value) > 50%) {
+        --#{$name}-hover: #{color.scale($value, $lightness: -10%)};
+      } @else {
+        --#{$name}-hover: #{color.scale($value, $lightness: 10%)};
+      }
     }
 
     @each $name, $color in v.$agnostic {
@@ -33,5 +37,12 @@
     font-family: fonts.$mainFont;
     background-color: var(--body-bg);
     color: var(--body-text);
+  }
+
+  a {
+    color: var(--link);
+    &:hover {
+      color: var(--link-hover);
+    }
   }
 }
