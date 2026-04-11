@@ -18,7 +18,7 @@
 <?php
 if (!isset($_SESSION['user'])) {
     echo "Vous n'êtes pas connecté !";
-    echo "<a href='?page=login'><button type='button'>Cliquez ici pour vous connecter</button><a/>";
+    echo "<a href='?page=login'><button type='button' class='button button--primary'>Cliquez ici pour vous connecter</button><a/>";
 } else {
     ?>
     <header>
@@ -60,17 +60,17 @@ if (!isset($_SESSION['user'])) {
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit">Modifier</button>
+                    <button type="submit" class="button button--primary">Modifier mes informations</button>
                 </td>
             </tr>
         </table>
     </form>
     <br>
     <form method="post" action="/account/delete" id="deletionForm">
-        <button onclick="return deleteAccount('deletionForm')" style="background-color: lightcoral;">Supprimer mon compte</button>
+        <button onclick="return deleteAccount('deletionForm')" class="button button--danger">Supprimer mon compte</button>
     </form>
     <br>
-    <a href="/index"><button type="button">Retour vers l'accueil</button></a>
+    <a href="/index"><button type="button" class="button button--secondary">Retour vers l'accueil</button></a>
     <?php
 }
 ?>

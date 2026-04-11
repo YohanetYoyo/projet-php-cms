@@ -9,7 +9,7 @@
 <?php
 if (!isset($_SESSION['user'])) {
     echo "Vous n'êtes pas connecté !";
-    echo "<a href='/login'><button type='button'>Cliquez ici pour vous connecter</button></a>";
+    echo "<a href='/login'><button type='button' class='button button--primary'>Cliquez ici pour vous connecter</button></a>";
 } else {
 ?>
     <header>
@@ -47,10 +47,10 @@ if (!isset($_SESSION['user'])) {
 
             <form method="post">
                 <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
-                <button type="submit" style="background-color: red; color: white; padding: 10px 20px;">
+                <button type="submit" class="button button--danger">
                     Supprimer la page
                 </button>
-                <a href="/home"><button type="button" style="background-color: gray; color: white; padding: 10px 20px;">
+                <a href="/home"><button type="button" class="button button--secondary">
                     Annuler
                 </button></a>
             </form>
@@ -58,16 +58,11 @@ if (!isset($_SESSION['user'])) {
         } else {
         ?>
             <p>Aucune page sélectionnée.</p>
-            <a href="/home"><button type="button">Retour à l'accueil</button></a>
+            <a href="/home"><button type="button" class="button button--secondary">Retour à l'accueil</button></a>
         <?php
         }
         ?>
     </main>
-
-    <br>
-    <form method="post" action="/home">
-        <button type="submit">Déconnexion</button>
-    </form>
 <?php
 }
 ?>

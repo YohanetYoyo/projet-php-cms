@@ -37,13 +37,13 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit">Connexion</button>
+                    <button type="submit" class="button button--primary">Connexion</button>
                 </td>
             </tr>
         </table>
     </form>
     <br>
-    <a href="/register">Pas de compte ? Cliquez ici pour vous inscrire</a>
+    <a href="/register"><button type="button" class="button button--secondary">S'inscrire</button></a>
     <br>
     <a href="/forgot-password">Mot de passe oublié ?</a>
 </body>

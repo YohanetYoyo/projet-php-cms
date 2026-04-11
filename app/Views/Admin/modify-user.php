@@ -9,11 +9,11 @@
 <?php
 if (!isset($_SESSION['user'])) {
     echo "Vous n'êtes pas connecté !";
-    echo "<a href='/login'><button type='button'>Cliquez ici pour vous connecter</button><a/>";
+    echo "<a href='/login'><button type='button' class='button button--primary'>Cliquez ici pour vous connecter</button><a/>";
 } else {
 if ($_SESSION['user']->getIsAdmin() != 1) {
     echo "Vous n'êtes pas autorisé à visionner cette page !";
-    echo "<a href='/index'><button type='button'>Cliquez ici pour retourner à l'accueil</button><a/>";
+    echo "<a href='/index'><button type='button' class='button button--primary'>Cliquez ici pour retourner à l'accueil</button><a/>";
 } else {
     ?>
     <header>
@@ -68,13 +68,13 @@ if ($_SESSION['user']->getIsAdmin() != 1) {
             <tr>
                 <td colspan="2">
                     <input type="hidden" name="idUser" value="<?= $idUser ?? $user['id_user'] ?>">
-                    <button type="submit">Modifier</button>
+                    <button type="submit" class="button button--primary">Modifier les informations</button>
                 </td>
             </tr>
         </table>
     </form>
     <br>
-    <a href="/manage-users"><button type="button">Retour vers gestion des utilisateurs</button></a>
+    <a href="/manage-users"><button type="button" class="button button--secondary">Retour vers gestion des utilisateurs</button></a>
     <?php
     }
 }

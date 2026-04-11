@@ -9,7 +9,7 @@
 <?php
 if (!isset($_SESSION['user'])) {
     echo "Vous n'êtes pas connecté !";
-    echo "<a href='/login'><button type='button'>Cliquez ici pour vous connecter</button></a>";
+    echo "<a href='/login'><button type='button' class='button button--primary'>Cliquez ici pour vous connecter</button></a>";
 } else {
 ?>
     <header>
@@ -53,11 +53,11 @@ if (!isset($_SESSION['user'])) {
                 
                 <br><br>
                 
-                <button type="submit" style="background-color: #28a745; color: white; padding: 10px 20px;">
+                <button type="submit" class="button button--primary">
                     Mettre à jour le statut
                 </button>
                 
-                <a href="/home"><button type="button" style="background-color: gray; color: white; padding: 10px 20px;">
+                <a href="/home"><button type="button" class="button button--secondary">
                     Annuler
                 </button></a>
             </form>
@@ -65,7 +65,7 @@ if (!isset($_SESSION['user'])) {
         } else {
         ?>
             <p>Aucune page sélectionnée.</p>
-            <a href="/home"><button type="button">Retour à l'accueil</button></a>
+            <a href="/home"><button type="button" class="button button--secondary">Retour à l'accueil</button></a>
         <?php
         }
         ?>

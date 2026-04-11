@@ -9,7 +9,7 @@
 <?php
 if (!isset($_SESSION['user'])) {
     echo "Vous n'êtes pas connecté !";
-    echo "<a href='/login'><button type='button'>Cliquez ici pour vous connecter</button></a>";
+    echo "<a href='/login'><button type='button' class='button button--primary'>Cliquez ici pour vous connecter</button></a>";
 } else {
 ?>
     <header>
@@ -75,18 +75,13 @@ if (!isset($_SESSION['user'])) {
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <button type="submit">Créer la page</button>
-                        <a href="/home"><button type="button">Annuler</button></a>
+                        <button type="submit" class="button button--primary">Créer la page</button>
+                        <a href="/home"><button type="button" class="button button--secondary">Annuler</button></a>
                     </td>
                 </tr>
             </table>
         </form>
     </main>
-
-    <br>
-    <form method="post" action="/home">
-        <button type="submit">Déconnexion</button>
-    </form>
 <?php
 }
 ?>

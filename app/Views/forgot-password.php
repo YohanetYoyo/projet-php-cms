@@ -28,7 +28,7 @@
             Réinitialiser mon mot de passe
         </a></p>
         <br>
-        <p><a href="/login">Retour à la connexion</a></p>
+        <p><a href="/login"><button type="button" class="button button--primary">Retour à la connexion</button></a></p>
     </div>
 <?php else: ?>
     <main>
@@ -49,8 +49,8 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <button type="submit">Envoyer le lien</button>
-                        <a href="/login"><button type="button">Retour</button></a>
+                        <button type="submit" class="button button--primary">Envoyer le lien</button>
+                        <a href="/login"><button type="button" class="button button--secondary">Retour</button></a>
                     </td>
                 </tr>
             </table>

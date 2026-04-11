@@ -61,12 +61,12 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit">S'inscrire</button>
+                    <button type="submit" class="button button--primary">S'inscrire</button>
                 </td>
             </tr>
         </table>
     </form>
     <br>
-    <a href="/login">Déjà un compte ? Cliquez ici pour vous connecter</a>
+    <a href="/login">Se connecter</a>
 </body>
 </html>

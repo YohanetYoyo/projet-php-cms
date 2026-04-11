@@ -21,7 +21,7 @@
 <?php if (isset($success) && $success): ?>
     <div class="success">
         <p style="color: green;">Votre mot de passe a été réinitialisé avec succès.</p>
-        <p><a href="/login">Cliquez ici pour vous connecter</a></p>
+        <p><a href="/login"><button type="button" class="button button--primary">Cliquez ici pour vous connecter</button></a></p>
     </div>
 <?php else: ?>
     <main>
@@ -50,8 +50,8 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <button type="submit">Réinitialiser le mot de passe</button>
-                        <a href="/login"><button type="button">Annuler</button></a>
+                        <button type="submit" class="button button--primary">Réinitialiser le mot de passe</button>
+                        <a href="/login"><button type="button" class="button button--secondary">Annuler</button></a>
                     </td>
                 </tr>
             </table>

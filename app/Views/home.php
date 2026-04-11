@@ -22,7 +22,7 @@ if (!isset($_SESSION['user'])) {
         ?>
         <table>
             <tr>
-                <td><a href="/manage-users"><button type="button">Gestion des utilisateurs</button></a></td>
+                <td><a href="/manage-users"><button type="button" class="button button--primary">Gestion des utilisateurs</button></a></td>
             </tr>
         </table>
         <br>
@@ -64,13 +64,13 @@ if (!isset($_SESSION['user'])) {
         <br>
         <table>
             <tr>
-                <td><a href="/create-page"><button type="button">Créer une nouvelle page</button></a></td>
+                <td><a href="/create-page"><button type="button" class="button button--primary">Créer une nouvelle page</button></a></td>
             </tr>
         </table>
     </main>
     <br>
     <form method="post" action="/home">
-        <button type="submit">Déconnexion</button>
+        <button type="submit" class="button button--secondary">Déconnexion</button>
     </form>
 <?php
 }

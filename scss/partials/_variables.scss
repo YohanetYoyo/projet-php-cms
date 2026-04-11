@@ -1,9 +1,18 @@
 $colors: (
         "black": #000,
         "white": #fff,
+        "grey": #2d2d2d,
+        "lightgrey": #F0FFFF,
+        "blue": #0055ff,
+        "yellow": #ffb600,
+        "red": #ff0000
 );
 
 $agnostic: (
+        "primary": "blue",
+        "secondary": "lightgrey",
+        "tertiary": "grey",
+        "danger": "red",
         "body-text": (
                 "light": "black",
                 "dark": "white",
