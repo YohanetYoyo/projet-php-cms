@@ -1,0 +1,9 @@
+@use "../partials/functions" as f;
+
+@mixin formStyling {
+  background-color: var(--lightgrey);
+  border: f.rem(2) solid var(--primary);
+  border-radius: f.rem(10);
+  color: var(--primary);
+  padding: f.rem(10) f.rem(6);
+}

@@ -1,0 +1,14 @@
+@use "../partials/functions" as f;
+@use "../partials/mixins" as m;
+
+@layer components {
+  input[type="text"], input[type="email"], input[type="password"], select {
+    @include m.formStyling;
+    box-sizing: border-box;
+    font-size: 1rem;
+    width: 100%;
+  }
+  textarea {
+    @include m.formStyling;
+  }
+}

@@ -23,7 +23,7 @@
     &--secondary {
       background-color: var(--secondary);
       color: var(--primary);
-      border: f.rem(2) solid var(--blue);
+      border: f.rem(2) solid var(--primary);
       &:hover {
         background-color: var(--secondary-hover);
       }
