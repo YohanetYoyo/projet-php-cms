@@ -1,0 +1,33 @@
+@use "variables" as v;
+@use "sass:meta";
+@use "sass:map";
+
+@layer base {
+  :root {
+    @each $name, $value in v.$colors {
+      --#{$name}: #{$value};
+    }
+
+    @each $name, $color in v.$agnostic {
+      @if (meta.type-of($color) == string) {
+        --#{$name}: var(--#{$color});
+        --#{$name}-hover: var(--#{$color}-hover);
+      } @else if(meta.type-of($color) == map) {
+        --#{$name}: var(--#{map.get($color, light)});
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      @each $name, $color in v.$agnostic {
+        @if (meta.type-of($color) == map) {
+          --#{$name}: var(--#{map.get($color, dark)});
+        }
+      }
+    }
+  }
+
+  body {
+    background-color: var(--body-bg);
+    color: var(--body-text);
+  }
+}
