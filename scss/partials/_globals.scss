@@ -1,3 +1,4 @@
+@use "fonts";
 @use "variables" as v;
 @use "sass:meta";
 @use "sass:map";
@@ -27,6 +28,7 @@
   }
 
   body {
+    font-family: fonts.$mainFont;
     background-color: var(--body-bg);
     color: var(--body-text);
   }
