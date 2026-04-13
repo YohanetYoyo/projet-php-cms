@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db:3306
--- Généré le : jeu. 09 avr. 2026 à 19:36
+-- Généré le : lun. 13 avr. 2026 à 10:50
 -- Version du serveur : 11.3.2-MariaDB-1:11.3.2+maria~ubu2204
 -- Version de PHP : 8.3.26
 
@@ -43,7 +43,8 @@ CREATE TABLE `Pages` (
 
 INSERT INTO `Pages` (`id_page`, `title`, `content`, `slug`, `status`, `author`, `created_at`) VALUES
 (2, 'AUTO', 'TERJTJNTEJQJQETJTEJEQTJETJJQJTEJJEJETJJWTKJSRYKSSK', 'drgreg', 'draft', 1, '2026-04-09 12:10:59'),
-(5, 'momo', 'ryjryjdsjtyyj', 'mama', 'archived', 3, '2026-04-09 18:47:23');
+(5, 'momo', 'ryjryjdsjtyyj', 'mama', 'archived', 3, '2026-04-09 18:47:23'),
+(12, 'Test', 'ceci est un test', 'ontest', 'published', 1, '2026-04-13 09:08:16');
 
 -- --------------------------------------------------------
 
@@ -56,6 +57,14 @@ CREATE TABLE `PageUserRoles` (
   `id_page` int(11) NOT NULL,
   `id_role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `PageUserRoles`
+--
+
+INSERT INTO `PageUserRoles` (`id_user`, `id_page`, `id_role`) VALUES
+(1, 12, 1),
+(4, 12, 3);
 
 -- --------------------------------------------------------
 
@@ -91,6 +100,15 @@ CREATE TABLE `Roles` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `Roles`
+--
+
+INSERT INTO `Roles` (`id_role`, `name`) VALUES
+(1, 'Admin'),
+(2, 'Editor'),
+(3, 'Visitor');
+
 -- --------------------------------------------------------
 
 --
@@ -114,7 +132,8 @@ CREATE TABLE `Users` (
 INSERT INTO `Users` (`id_user`, `lastname`, `firstname`, `email`, `pwd`, `is_admin`, `created_at`) VALUES
 (1, 'ADMIN', 'Admin', 'admin@admin.admin', '$2y$10$0sV7M8UZ40vM1KAbbv38rOlnItoWihq56u1XbCq3VJu6FA.c/jk7a', 1, '2026-03-18 14:31:29'),
 (2, 'GNAMKEY', 'Yvan', 'ygnamkey3@gmail.com', '$2y$10$3gGHeuJ/N0Lj/2AMIc3Y7.Y6FMFY03WRNS.3tvxra5Od1DY26k1Y2', 0, '2026-04-03 17:58:36'),
-(3, 'GNAMKEY', 'Yvan', 'gnamkeyyvan1@gmail.com', '$2y$10$svf/S1xOnZOqfKYo//8CK.2xqt8BVShycS4nr6BlQ6867NtHuKUU6', 0, '2026-04-09 12:15:25');
+(3, 'GNAMKEY', 'Yvan', 'gnamkeyyvan1@gmail.com', '$2y$10$svf/S1xOnZOqfKYo//8CK.2xqt8BVShycS4nr6BlQ6867NtHuKUU6', 0, '2026-04-09 12:15:25'),
+(4, 'VIGNEZ', 'Yohan', 'y.vignez@myskolae.fr', '$2y$10$B8z1CaCIXbkVx38y/7kY.u65qpPTZ1kkEjeVk7jryo5Mn7mHInoc.', 0, '2026-04-13 09:18:19');
 
 --
 -- Index pour les tables déchargées
@@ -164,7 +183,7 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT pour la table `Pages`
 --
 ALTER TABLE `Pages`
-  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_page` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `PasswordResetTokens`
@@ -176,13 +195,13 @@ ALTER TABLE `PasswordResetTokens`
 -- AUTO_INCREMENT pour la table `Roles`
 --
 ALTER TABLE `Roles`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
