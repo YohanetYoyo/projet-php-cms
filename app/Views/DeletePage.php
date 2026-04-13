@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Supprimer une page</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 <?php

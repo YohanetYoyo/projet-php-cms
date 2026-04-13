@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestion des utilisateurs</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script>
         function deleteAccount(deletionForm) {
             if (confirm("Êtes-vous sûr de vouloir supprimer ce compte ?") === true) {
