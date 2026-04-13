@@ -142,7 +142,7 @@ class PageController {
             $_SERVER["REQUEST_METHOD"] == "POST" &&
             !empty($_POST["id_page"])
         ) {
-            $this->pageUserRolesRepository->delete($_SESSION['user']->getIdUser(), $_POST["id_page"]);
+            $this->pageUserRolesRepository->delete($_POST["id_page"]);
             $this->pageRepository->delete((int)$_POST["id_page"]);
             header("Location: /index");
             exit;

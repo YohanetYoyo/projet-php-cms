@@ -31,13 +31,12 @@ class PageUserRolesRepository {
         ]);
     }
 
-    public function delete(int $idUser, int $idPage): void {
+    public function delete(int $idPage): void {
         $query = $this->pdo->getConnection()->prepare(
-            "DELETE FROM PageUserRoles WHERE id_user = :id_user AND id_page = :id_page"
+            "DELETE FROM PageUserRoles WHERE id_page = :id_page"
         );
         $query->execute([
-            "id_user" => $idUser,
-            "id_page" => $idPage,
+            "id_page" => $idPage
         ]);
     }
 
