@@ -15,10 +15,13 @@ RUN apt-get update && apt-get install -y \
     zip \
     opcache
 
+# Active le module mod_rewrite d'Apache, pour réécrire les URL
 RUN a2enmod rewrite
 
+# Modifie la racine pour pointer sur /public directement
 RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
 
+# Autorise le fichier .htaccess
 RUN echo '<Directory /var/www/html/public>\n\
     AllowOverride All\n\
 </Directory>' >> /etc/apache2/apache2.conf

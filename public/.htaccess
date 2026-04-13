@@ -1,9 +1,12 @@
+# Active la réécriture des URL
 RewriteEngine On
 
+# Si l'URL est vide et que ce n'est pas un fichier ou dossier, rediriger vers index
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^$ index.php?page=index [L]
 
+# Si l'URL n'est pas un fichier ou dossier, redirige vers ce qui est écrit dans l'URL
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.+)$ index.php?page=$1 [L,QSA]
