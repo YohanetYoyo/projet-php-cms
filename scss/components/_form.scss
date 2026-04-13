@@ -1,0 +1,54 @@
+@use "../partials/functions" as f;
+@use "../partials/mixins" as m;
+
+@layer components {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: auto;
+    width: fit-content;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    label {
+      text-align: center;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], select {
+      @include m.formStyling;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    textarea {
+      @include m.formStyling;
+    }
+
+    a:has(.button) {
+      display: contents;
+      text-decoration: underline;
+    }
+
+    hr {
+      width: 100%;
+      border: 2px solid var(--grey);
+      border-radius: f.rem(4);
+    }
+  }
+
+  form + form {
+    margin-top: f.rem(16);
+    margin-bottom: f.rem(16);
+  }
+
+  .radio {
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+  }
+}

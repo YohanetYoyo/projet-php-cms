@@ -9,30 +9,27 @@
 <?php
 if (!isset($_SESSION['user'])) {
     echo "Vous n'êtes pas connecté !";
-    echo "<a href='/login'><button type='button'>Cliquez ici pour vous connecter</button><a/>";
+    echo "<a href='/login'><button type='button' class='button button--secondary'>Cliquez ici pour vous connecter</button><a/>";
 } else {
 ?>
     <header>
-        <h1>Bienvenue, <?= $_SESSION['user']->getLastname(). " ". $_SESSION['user']->getFirstname(). " !" ?></h1>
-        <small><a href="/account">Gérer mon compte</a></small>
+        <div class="container">
+            <h1>Bienvenue, <?= $_SESSION['user']->getLastname(). " ". $_SESSION['user']->getFirstname(). " !" ?></h1>
+            <small><a href="/account">Gérer mon compte</a></small>
+        </div>
     </header>
     <main>
+        <div class="container">
         <?php
         if ($_SESSION['user']->getIsAdmin() == 1):
         ?>
-        <table>
-            <tr>
-                <td><a href="/manage-users"><button type="button" class="button button--primary">Gestion des utilisateurs</button></a></td>
-            </tr>
-        </table>
-        <br>
+            <a href="/manage-users"><button type="button" class="button button--primary">Gestion des utilisateurs</button></a>
         <?php
         endif;
         ?>
-        </br>
-        <h2>Vos pages</h2>
+            <h2>Vos pages</h2>
         <?php if (!empty($pages)): ?>
-            <table border="1" style="width: 100%; border-collapse: collapse;">
+            <table>
                 <thead>
                     <tr>
                         <th>Titre</th>
@@ -52,19 +49,19 @@ if (!isset($_SESSION['user'])) {
                             <td>
                                 <form method="post" action="/modify-page/showUpdate">
                                     <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
-                                    <button type="submit" class="button button--primary">Modifier</button>
+                                    <button type="submit" class="button button--primary button--small">Modifier</button>
                                 </form>
                             </td>
                             <td>
                                 <form method="post" action="/delete-page/showDelete">
                                     <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
-                                    <button type="submit" class="button button--danger">Supprimer</button>
+                                    <button type="submit" class="button button--danger button--small">Supprimer</button>
                                 </form>
                             </td>
                             <td>
                                 <form method="post" action="/publish-page/showPublish">
                                     <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
-                                    <button type="submit" class="button button--primary">Publier</button>
+                                    <button type="submit" class="button button--primary button--small">Publier</button>
                                 </form>
                             </td>
                         </tr>
@@ -74,16 +71,10 @@ if (!isset($_SESSION['user'])) {
         <?php else: ?>
             <p>Vous n'avez pas encore créé de page.</p>
         <?php endif; ?>
-        <br>
-        <table>
-            <tr>
-                <td><a href="/create-page"><button type="button" class="button button--primary">Créer une nouvelle page</button></a></td>
-            </tr>
-        </table>
-        <br>
+        <a href="/create-page"><button type="button" class="button button--primary">Créer une nouvelle page</button></a></td>
         <h2>Autres pages</h2>
         <?php if (!empty($otherPages)): ?>
-            <table border="1" style="width: 100%; border-collapse: collapse;">
+            <table>
                 <thead>
                 <tr>
                     <th>Titre</th>
@@ -141,11 +132,11 @@ if (!isset($_SESSION['user'])) {
         <?php else: ?>
             <p>Vous n'avez pas accès à d'autres pages.</p>
         <?php endif; ?>
-    </main>
-    <br>
     <form method="post" action="/home">
         <button type="submit" class="button button--secondary">Déconnexion</button>
     </form>
+    </div>
+    </main>
 <?php
 }
 ?>

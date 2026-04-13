@@ -13,55 +13,67 @@ if (!isset($_SESSION['user'])) {
 } else {
 ?>
     <header>
-        <h1>Supprimer une page</h1>
-    </header>
-
-    <main>
-        <?php
-        if (!empty($errors)) {
-            echo "<div class='errors'>";
-            foreach ($errors as $error) {
-                echo "<p style='color: red;'>" . htmlspecialchars($error) . "</p>";
+        <div class="container">
+            <h1>Supprimer une page</h1>
+            <?php
+                if (!empty($errors)) {
+                echo "<div class='errors'>";
+                foreach ($errors as $error) {
+                    echo "<p style='color: red;'>" . htmlspecialchars($error) . "</p>";
+                }
+                echo "</div>";
             }
-            echo "</div>";
-        }
+            ?>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <?php
+            if (!empty($page)) {
+                ?>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Slug</th>
+                            <th>Statut</th>
+                            <th>Auteur</th>
+                            <th>Créée le</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?= htmlspecialchars($page['title']) ?></td>
+                                <td><?= htmlspecialchars($page['slug']) ?></td>
+                                <td><?= htmlspecialchars($page['status']) ?></td>
+                                <td><?= htmlspecialchars($page['author']) ?></td>
+                                <td><?= htmlspecialchars($page['created_at']) ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <div>
+                    <h3>Aperçu du contenu :</h3>
+                    <p><?= substr(htmlspecialchars($page['content']), 0, 200) ?>...</p>
+                </div>
 
-        if (!empty($page)) {
-        ?>
-            <div class="page-info">
-                <h2><?= htmlspecialchars($page['title']) ?></h2>
-                <p><strong>Slug :</strong> <?= htmlspecialchars($page['slug']) ?></p>
-                <p><strong>Statut :</strong> <?= htmlspecialchars($page['status']) ?></p>
-                <p><strong>Auteur :</strong> <?= htmlspecialchars($page['author']) ?></p>
-                <p><strong>Créée le :</strong> <?= htmlspecialchars($page['created_at']) ?></p>
-            </div>
+                <div>
+                    <p style="color: red; font-weight: bold;">⚠️ ATTENTION : Cette action est irréversible !</p>
+                </div>
 
-            <div class="content-preview">
-                <h3>Aperçu du contenu :</h3>
-                <p><?= substr(htmlspecialchars($page['content']), 0, 200) ?>...</p>
-            </div>
-
-            <div class="warning">
-                <p style="color: red; font-weight: bold;">⚠️ ATTENTION : Cette action est irréversible !</p>
-            </div>
-
-            <form method="post" action="/delete-page">
-                <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
-                <button type="submit" class="button button--danger">
-                    Supprimer la page
-                </button>
-                <a href="/home"><button type="button" class="button button--secondary">
-                    Annuler
-                </button></a>
-            </form>
-        <?php
-        } else {
-        ?>
-            <p>Aucune page sélectionnée.</p>
-            <a href="/home"><button type="button" class="button button--secondary">Retour à l'accueil</button></a>
-        <?php
-        }
-        ?>
+                <form method="post" action="/delete-page">
+                    <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
+                    <button type="submit" class="button button--danger">Supprimer la page</button>
+                    <a href="/home"><button type="button" class="button button--secondary">Annuler</button></a>
+                </form>
+                <?php
+            } else {
+                ?>
+                <p>Aucune page sélectionnée.</p>
+                <a href="/home"><button type="button" class="button button--secondary">Retour à l'accueil</button></a>
+                <?php
+            }
+            ?>
+        </div>
     </main>
 <?php
 }

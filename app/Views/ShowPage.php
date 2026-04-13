@@ -28,13 +28,13 @@ if (!isset($_SESSION['user'])) {
     if ($show) {
     ?>
     <header>
-        <h1><?= htmlspecialchars($page['title']) ?></h1>
-    </header>
-
-    <main>
-        <div class="page-info">
-            <p><?= htmlspecialchars($page['content']) ?></p>
+        <div class="container">
+            <h1><?= htmlspecialchars($page['title']) ?></h1>
         </div>
+    </header>
+    <main>
+        <div class="container">
+            <p><?= htmlspecialchars($page['content']) ?></p>
         <?php
     } else {
         ?>
@@ -42,8 +42,8 @@ if (!isset($_SESSION['user'])) {
         <?php
     }
     ?>
-    <br>
     <a href="/index"><button type="button" class="button button--secondary">Retour à l'accueil</button></a>
+    </div>
     </main>
     <?php
 }

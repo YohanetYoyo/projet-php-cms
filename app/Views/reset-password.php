@@ -7,56 +7,45 @@
 </head>
 <body>
 <header>
-    <h1>Réinitialiser votre mot de passe</h1>
+    <div class="container">
+        <h1>Réinitialiser votre mot de passe</h1>
+        <?php if (!empty($errors)): ?>
+            <div class="errors">
+                <?php foreach ($errors as $error): ?>
+                    <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </div>
 </header>
-
-<?php if (!empty($errors)): ?>
-    <div class="errors">
-        <?php foreach ($errors as $error): ?>
-            <p style="color: red;"><?= htmlspecialchars($error) ?></p>
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>
-
-<?php if (isset($success) && $success): ?>
-    <div class="success">
-        <p style="color: green;">Votre mot de passe a été réinitialisé avec succès.</p>
-        <p><a href="/login"><button type="button" class="button button--primary">Cliquez ici pour vous connecter</button></a></p>
-    </div>
-<?php else: ?>
-    <main>
+<main>
+    <div class="container">
+        <?php if (isset($success) && $success): ?>
+            <div>
+                <p style="color: green;">Votre mot de passe a été réinitialisé avec succès.</p>
+                <p><a href="/login"><button type="button" class="button button--primary">Cliquez ici pour vous connecter</button></a></p>
+            </div>
+        <?php else: ?>
         <form method="post">
             <input type="hidden" name="token" value="<?= htmlspecialchars($token ?? '') ?>">
-            
-            <table>
-                <tr>
-                    <td>
-                        <label for="pwd"><strong>Nouveau mot de passe :</strong></label>
-                    </td>
-                    <td>
-                        <input id="pwd" type="password" name="pwd" required>
-                        <small style="display: block; margin-top: 5px;">
-                            Minimum 8 caractères : 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial (.;?,-!)
-                        </small>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="confirm_pwd"><strong>Confirmer le mot de passe :</strong></label>
-                    </td>
-                    <td>
-                        <input id="confirm_pwd" type="password" name="confirm_pwd" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <button type="submit" class="button button--primary">Réinitialiser le mot de passe</button>
-                        <a href="/login"><button type="button" class="button button--secondary">Annuler</button></a>
-                    </td>
-                </tr>
-            </table>
+            <div>
+                <label for="pwd"><strong>Nouveau mot de passe :</strong></label>
+                <input id="pwd" type="password" name="pwd" required>
+            </div>
+            <div>
+                <small style="display: block; margin-top: 5px;">
+                    Minimum 8 caractères : 1 majuscule, 1 minuscule, 1 chiffre, 1 caractère spécial (.;?,-!)
+                </small>
+            </div>
+            <div>
+                <label for="confirm_pwd"><strong>Confirmer le mot de passe :</strong></label>
+                <input id="confirm_pwd" type="password" name="confirm_pwd" required>
+            </div>
+            <button type="submit" class="button button--primary">Réinitialiser le mot de passe</button>
+            <a href="/login"><button type="button" class="button button--secondary">Annuler</button></a>
         </form>
-    </main>
-<?php endif; ?>
+        <?php endif; ?>
+    </div>
+</main>
 </body>
 </html>

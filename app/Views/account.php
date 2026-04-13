@@ -22,55 +22,41 @@ if (!isset($_SESSION['user'])) {
 } else {
     ?>
     <header>
-        <h1>Gérer mon compte</h1>
-    </header>
-    <?php if (!empty($errors)):
-        foreach ($errors as $error):
+        <div class="container">
+            <h1>Gérer mon compte</h1>
+            <?php if (!empty($errors)):
+                foreach ($errors as $error):
+                    ?>
+                    <h2 style="color: red;"><?= $error ?></h2>
+                <?php
+                endforeach;
+            endif;
             ?>
-            <h2 style="color: red;"><?= $error ?></h2>
-        <?php
-        endforeach;
-    endif;
-    ?>
-    <form method="post" action="/account/update">
-        <table>
-            <tr>
-                <td>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <form method="post" action="/account/update">
+                <div>
                     <label for="nom">Nom :</label>
-                </td>
-                <td>
                     <input id="nom" type="text" name="lastname" value="<?= $lastname ?? $_SESSION['user']->getLastname() ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
+                </div>
+                <div>
                     <label for="prenom">Prénom :</label>
-                </td>
-                <td>
                     <input id="prenom" type="text" name="firstname" value="<?= $firstname ?? $_SESSION['user']->getFirstname() ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
+                </div>
+                <div>
                     <label for="email">Email :</label>
-                </td>
-                <td>
                     <input id="email" type="email" name="email" value="<?= $email ?? $_SESSION['user']->getEmail() ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <button type="submit" class="button button--primary">Modifier mes informations</button>
-                </td>
-            </tr>
-        </table>
-    </form>
-    <br>
-    <form method="post" action="/account/delete" id="deletionForm">
-        <button onclick="return deleteAccount('deletionForm')" class="button button--danger">Supprimer mon compte</button>
-    </form>
-    <br>
-    <a href="/index"><button type="button" class="button button--secondary">Retour vers l'accueil</button></a>
+                </div>
+                <button type="submit" class="button button--primary">Modifier mes informations</button>
+            </form>
+            <form method="post" action="/account/delete" id="deletionForm">
+                <button onclick="return deleteAccount('deletionForm')" class="button button--danger">Supprimer mon compte</button>
+            </form>
+            <a href="/index"><button type="button" class="button button--secondary">Retour vers l'accueil</button></a>
+        </div>
+    </main>
     <?php
 }
 ?>

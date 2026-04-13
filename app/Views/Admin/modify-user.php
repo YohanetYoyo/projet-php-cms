@@ -17,64 +17,48 @@ if ($_SESSION['user']->getIsAdmin() != 1) {
 } else {
     ?>
     <header>
-        <h1>Modifier l'utilisateur <?= $user['lastname']. " ". $user['firstname'] ?></h1>
-    </header>
-    <?php if (!empty($errors)):
-        foreach ($errors as $error):
+        <div class="container">
+            <h1>Modifier l'utilisateur <?= $user['lastname']. " ". $user['firstname'] ?></h1>
+            <?php if (!empty($errors)):
+                foreach ($errors as $error):
+                    ?>
+                    <h2 style="color: red;"><?= $error ?></h2>
+                <?php
+                endforeach;
+            endif;
             ?>
-            <h2 style="color: red;"><?= $error ?></h2>
-        <?php
-        endforeach;
-    endif;
-    ?>
-    <form method="post" action="/modify-user">
-        <table>
-            <tr>
-                <td>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <form method="post" action="/modify-user">
+                <div>
                     <label for="nom">Nom :</label>
-                </td>
-                <td>
                     <input id="nom" type="text" name="lastname" value="<?= $lastname ?? $user['lastname'] ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
+                </div>
+                <div>
                     <label for="prenom">Prénom :</label>
-                </td>
-                <td>
                     <input id="prenom" type="text" name="firstname" value="<?= $firstname ?? $user['firstname'] ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
+                </div>
+                <div>
                     <label for="email">Email :</label>
-                </td>
-                <td>
                     <input id="email" type="email" name="email" value="<?= $email ?? $user['email'] ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
+                </div>
+                <div class="radio">
                     <label>Admin :</label>
-                </td>
-                <td>
                     <label for="isAdmin">Oui :</label>
                     <input id="isAdmin" type="radio" name="isAdmin" value="1" <?= $isAdmin ?? $user['is_admin'] === 1 ? 'checked' : '' ?>>
-                    <br>
                     <label for="isNotAdmin">Non :</label>
                     <input id="isNotAdmin" type="radio" name="isAdmin" value="0" <?= $isAdmin ?? $user['is_admin'] === 0 ? 'checked' : '' ?>>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
+                </div>
+                <div>
                     <input type="hidden" name="idUser" value="<?= $idUser ?? $user['id_user'] ?>">
                     <button type="submit" class="button button--primary">Modifier les informations</button>
-                </td>
-            </tr>
-        </table>
-    </form>
-    <br>
-    <a href="/manage-users"><button type="button" class="button button--secondary">Retour vers gestion des utilisateurs</button></a>
+                </div>
+            </form>
+            <a href="/manage-users"><button type="button" class="button button--secondary">Retour vers gestion des utilisateurs</button></a>
+        </div>
+    </main>
     <?php
     }
 }

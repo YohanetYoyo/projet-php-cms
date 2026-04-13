@@ -7,66 +7,45 @@
 </head>
 <body>
 <header>
-    <h1>Inscription</h1>
-    <?php if (!empty($errors)):
-        foreach ($errors as $error):
-    ?>
-        <h2 style="color: red;"><?= $error ?></h2>
-    <?php
-        endforeach;
-    endif;
-    ?>
+    <div class="container">
+        <h1>Inscription</h1>
+        <?php if (!empty($errors)):
+            foreach ($errors as $error):
+                ?>
+                <h2 style="color: red;"><?= $error ?></h2>
+            <?php
+            endforeach;
+        endif;
+        ?>
+    </div>
 </header>
-    <form method="post" action="/register">
-        <table>
-            <tr>
-                <td>
-                    <label for="nom">Nom :</label>
-                </td>
-                <td>
-                    <input id="nom" type="text" name="lastname" value="<?= $lastname ?? "" ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="prenom">Prénom :</label>
-                </td>
-                <td>
-                    <input id="prenom" type="text" name="firstname" value="<?= $firstname ?? "" ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="email">Email :</label>
-                </td>
-                <td>
-                    <input id="email" type="email" name="email" value="<?= $email ?? "" ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="pwd">Mot de passe :</label>
-                </td>
-                <td>
-                    <input id="pwd" type="password" name="pwd" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="confirmPwd">Confirmer mot de passe :</label>
-                </td>
-                <td>
-                    <input id="confirmPwd" type="password" name="confirmPwd" required>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <button type="submit" class="button button--primary">S'inscrire</button>
-                </td>
-            </tr>
-        </table>
-    </form>
-    <br>
-    <a href="/login">Se connecter</a>
+<main>
+    <div class="container">
+        <form method="post" action="/register">
+            <div>
+                <label for="nom">Nom :</label>
+                <input id="nom" type="text" name="lastname" value="<?= $lastname ?? "" ?>" required>
+            </div>
+            <div>
+                <label for="prenom">Prénom :</label>
+                <input id="prenom" type="text" name="firstname" value="<?= $firstname ?? "" ?>" required>
+            </div>
+            <div>
+                <label for="email">Email :</label>
+                <input id="email" type="email" name="email" value="<?= $email ?? "" ?>" required>
+            </div>
+            <div>
+                <label for="pwd">Mot de passe :</label>
+                <input id="pwd" type="password" name="pwd" required>
+            </div>
+            <div>
+                <label for="confirmPwd">Confirmer mot de passe :</label>
+                <input id="confirmPwd" type="password" name="confirmPwd" required>
+            </div>
+            <button type="submit" class="button button--primary">S'inscrire</button>
+            <a href="/login">Se connecter</a>
+        </form>
+    </div>
+</main>
 </body>
 </html>

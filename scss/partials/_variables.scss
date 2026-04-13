@@ -4,6 +4,7 @@ $colors: (
         "grey": #2d2d2d,
         "lightgrey": #f0f0f0,
         "blue": #0055ff,
+        "lightblue": #4dabff,
         "yellow": #ffb600,
         "red": #ff0000
 );
@@ -23,10 +24,10 @@ $agnostic: (
         ),
         "link": (
                 "light": "primary",
-                "dark": "white"
+                "dark": "lightblue"
         ),
         "link-hover": (
                 "light": "primary-hover",
-                "dark": "white-hover"
+                "dark": "lightblue-hover"
         )
 );

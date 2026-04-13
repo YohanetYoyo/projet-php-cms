@@ -44,5 +44,11 @@
         background-color: var(--danger-hover);
       }
     }
+
+    &--small {
+      padding: f.rem(8) f.rem(12);
+      font-size: f.rem(14);
+      width: auto;
+    }
   }
 }
