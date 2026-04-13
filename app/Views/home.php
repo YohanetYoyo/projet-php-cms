@@ -134,7 +134,6 @@ if (!isset($_SESSION['user'])) {
                                 </form>
                             </td>
                             <?php endif; ?>
-                        </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

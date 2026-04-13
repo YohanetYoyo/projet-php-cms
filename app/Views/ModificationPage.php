@@ -26,7 +26,7 @@ if (!isset($_SESSION['user'])) {
             echo "</div>";
         }
 
-        if (!empty($page)) {
+        if (!empty($page) && !empty($role)) {
         ?>
             <form method="post" action="/modify-page">
                 <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
@@ -49,6 +49,40 @@ if (!isset($_SESSION['user'])) {
 
                 <label for="content"><strong>Contenu :</strong></label>
                 <textarea name="content" id="content" rows="10" required><?= htmlspecialchars($page['content']) ?></textarea>
+
+                <br><br>
+
+                <?php if (!empty($users) && $role['id_role'] == 1): ?>
+                <table border="1" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Rôle</th>
+                        <th>Cochez pour retirer accès</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($users as $user): ?>
+                        <tr>
+                            <td><?= $user['lastname'] ?></td>
+                            <td><?= $user['firstname'] ?></td>
+                            <td>
+                                <select name="roles[<?= $user['id_user'] ?>]">
+                                    <option value="1" <?= $user['id_role'] === 1 ? 'selected' : '' ?>>Administrateur</option>
+                                    <option value="2" <?= $user['id_role'] === 2 ? 'selected' : '' ?>>Éditeur</option>
+                                    <option value="3" <?= $user['id_role'] === 3 ? 'selected' : '' ?>>Visiteur</option>
+                                </select>
+                                <input type="hidden" name="id_user" value="<?= $user['id_user'] ?>">
+                            </td>
+                            <td>
+                                <input type="checkbox" name="delete[]" value="<?= $user['id_user'] ?>">
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php endif; ?>
 
                 <br><br>
 

@@ -78,6 +78,8 @@ class PageController {
     // AFFICHER LA PAGE À MODIFIER
     public function showUpdate(): void {
         $page = $this->pageRepository->getById($_POST["id_page"]);
+        $role = $this->pageUserRolesRepository->getByUserAndPage($_SESSION['user']->getIdUser(), $_POST["id_page"]);
+        $users = $this->pageUserRolesRepository->getOtherUsersOnPage($_SESSION['user']->getIdUser(), $_POST["id_page"]);
         require __DIR__ . '/../Views/ModificationPage.php';
     }
 
@@ -106,6 +108,22 @@ class PageController {
                 "status" => $status,
                 "author" => $author
             ]));
+
+            if (!empty($_POST['roles'])) {
+                foreach($_POST['roles'] as $idUser => $role) {
+                    $this->pageUserRolesRepository->update(new PageUserRoles([
+                        "idUser" => $idUser,
+                        "idPage" => $idPage,
+                        "idRole" => $role
+                    ]));
+                }
+            }
+
+            if (!empty($_POST['delete'])) {
+                foreach($_POST['delete'] as $idUser) {
+                    $this->pageUserRolesRepository->delete($idUser, $idPage);
+                }
+            }
 
             header("Location: /index");
             exit;
