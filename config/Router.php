@@ -18,21 +18,31 @@ class Router {
         // Récupère la méthode (GET ou POST)
         $method = $_SERVER['REQUEST_METHOD'];
 
-        // S'il n'y a aucune route trouvée
-        if (!isset($this->routes[$method][$page])) {
-            echo "Erreur 404 - Page non trouvée";
+        // S'il y a une route trouvée
+        if (isset($this->routes[$method][$page])) {
+            // On sépare le controller et l'action en deux parties via le '/'
+            list($controller, $action) = explode('/', $this->routes[$method][$page]);
+
+            // On appelle le fichier contenant le controller
+            require_once __DIR__.'/../app/controllers/'.$controller.'.php';
+
+            $controller = new $controller();
+            // On exécute la fonction qui possède le même nom que l'action
+            $controller->$action();
             return;
         }
 
-        // On sépare le controller et l'action en deux parties via le '/'
-        list($controller, $action) = explode('/', $this->routes[$method][$page]);
+        // Sinon, on essaye le pattern qui recherche le slug d'une page
+        $slug = explode('/', $page);
+        if ($slug[0] === 'page' && count($slug) == 2) {
+            require_once __DIR__.'/../app/controllers/PageController.php';
+            $controller = new PageController();
+            $controller->show($slug[1]);
+            return;
+        }
 
-        // On appelle le fichier contenant le controller
-        require_once __DIR__.'/../app/controllers/'.$controller.'.php';
-
-        $controller = new $controller();
-        // On exécute la fonction qui possède le même nom que l'action
-        $controller->$action();
+        // Si rien ne marche, on affiche une erreur
+        echo "Erreur 404 - Page non trouvée";
     }
 
 }

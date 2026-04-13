@@ -14,6 +14,7 @@ class IndexController {
         if (isset($_SESSION['user'])) {
             $author = $_SESSION['user']->getIdUser();
             $pages = $this->pageRepository->getByAuthor($author);
+            $otherPages = $this->pageRepository->getAccessiblePages();
         }
         require __DIR__ . '/../Views/home.php';
         }

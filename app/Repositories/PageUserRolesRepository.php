@@ -11,7 +11,7 @@ class PageUserRolesRepository {
     public function insert(PageUserRoles $pageUserRoles): void {
         $query = $this->pdo->getConnection()->prepare(
             "
-            INSERR INTO PageUserRoles (id_user, id_page, id_role') VALUES (:id_user, :id_page, :id_role)"
+            INSERT INTO PageUserRoles (id_user, id_page, id_role) VALUES (:id_user, :id_page, :id_role)"
         );
         $query->execute([
             "id_user" => $pageUserRoles->getIdUser(),

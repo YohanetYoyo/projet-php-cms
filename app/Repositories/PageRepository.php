@@ -10,7 +10,7 @@ class PageRepository {
 
     // Insère une nouvelle page
     // Paramètre: $page (objet Page)
-    public function insert(Page $page): void {
+    public function insert(Page $page): int {
         $query = $this->pdo->getConnection()->prepare(
             "INSERT INTO Pages (title, content, slug, status, author, created_at) VALUES (:title, :content, :slug, :status, :author, :created_at)"
         );
@@ -22,6 +22,7 @@ class PageRepository {
             "author" => $page->getAuthor(),
             "created_at" => $page->getCreatedAt()
         ]);
+        return $this->pdo->getConnection()->query("SELECT LAST_INSERT_ID();")->fetchColumn();
     }
 
     // Met à jour une page
@@ -102,6 +103,15 @@ class PageRepository {
             "SELECT id_page, title, content, slug, status, author, created_at FROM Pages WHERE author = :author ORDER BY created_at DESC"
         );
         $query->execute(["author" => $author]);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Récupère les pages là où l'utilisateur a un rôle
+    public function getAccessiblePages() : array {
+        $query = $this->pdo->getConnection()->prepare(
+            "SELECT DISTINCT p.id_page, p.title, p.content, p.slug, p.status, p.author, p.created_at, pur.id_role FROM Pages as p INNER JOIN PageUserRoles as pur on pur.id_page = p.id_page WHERE pur.id_user = :id_user AND author != :id_user ORDER BY p.created_at DESC"
+        );
+        $query->execute(["id_user" => $_SESSION['user']->getIdUser()]);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }

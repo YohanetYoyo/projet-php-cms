@@ -1,12 +1,16 @@
 <?php
 require_once __DIR__ . "/../Models/Page.php";
+require_once __DIR__ . "/../Models/PageUserRoles.php";
 require_once __DIR__ . "/../Repositories/PageRepository.php";
+require_once __DIR__ . "/../Repositories/PageUserRolesRepository.php";
 
 class PageController {
     private $pageRepository;
+    private $pageUserRolesRepository;
 
     public function __construct() {
         $this->pageRepository = new PageRepository();
+        $this->pageUserRolesRepository = new PageUserRolesRepository();
     }
 
     // AFFICHER LE FORMULAIRE DE CRÉATION
@@ -28,7 +32,7 @@ class PageController {
         ) {
             $title = trim($_POST["title"]);
             $content = trim($_POST["content"]);
-            $slug = strtolower(trim($_POST["slug"]));
+            $slug = strtolower(str_replace(' ', '', trim($_POST["slug"])));
             $status = trim($_POST["status"]);
             $author = $_SESSION['user']->getIdUser(); 
 
@@ -51,13 +55,19 @@ class PageController {
             if (count($errors) > 0) {
                 require __DIR__ . '/../Views/CreatePage.php';
             } else {
-                $this->pageRepository->insert(new Page([
+                $id = $this->pageRepository->insert(new Page([
                     "title" => $title,
                     "content" => $content,
                     "slug" => $slug,
                     "status" => $status,
                     "author" => $author,
                     "createdAt" => date("Y-m-d H:i:s")
+                ]));
+
+                $this->pageUserRolesRepository->insert(new PageUserRoles([
+                    "idUser" => $_SESSION['user']->getIdUser(),
+                    "idPage" => $id,
+                    "idRole" => 1
                 ]));
                 header("Location: /index");
                 exit;
@@ -136,6 +146,7 @@ class PageController {
             $_SERVER["REQUEST_METHOD"] == "POST" &&
             !empty($_POST["id_page"])
         ) {
+            $this->pageUserRolesRepository->delete($_SESSION['user']->getIdUser(), $_POST["id_page"]);
             $this->pageRepository->delete((int)$_POST["id_page"]);
             header("Location: /index");
             exit;
@@ -180,5 +191,16 @@ class PageController {
             header("Location: /index");
             exit;
         }
+    }
+
+    public function show($slug): void {
+        $page = $this->pageRepository->getBySlug($slug);
+        if (!$page) {
+            echo "Erreur 404 - Page non trouvée";
+            return;
+        }
+
+        $role = $this->pageUserRolesRepository->getByUserAndPage($_SESSION['user']->getIdUser(), $page['id_page']);
+        require __DIR__ . '/../Views/ShowPage.php';
     }
 }
