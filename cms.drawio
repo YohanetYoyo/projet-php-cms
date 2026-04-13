@@ -1,0 +1,273 @@
+<mxfile host="65bd71144e">
+  <diagram id="mvc-architecture" name="Architecture MVC - CMS PHP">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1454" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- TITRE -->
+        <mxCell id="2" value="CMS PHP — Architecture MVC" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="10" width="700" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- CLIENT NAVIGATEUR -->
+        <mxCell id="3" value="Client (Navigateur)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="300" y="70" width="240" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- ===== POINT D'ENTREE ET ROUTAGE ===== -->
+        <mxCell id="5" value="Point d&apos;entrée &amp; Routage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="175" width="780" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="public/index.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="45" y="215" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="config/Router.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="285" y="215" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="config/Database.php&#xa;(Singleton PDO)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="535" y="215" width="260" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ===== CONTROLEURS ===== -->
+        <mxCell id="9" value="Contrôleurs (Controllers)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="340" width="780" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="IndexController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="375" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="HomeController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="375" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="LoginController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="355" y="375" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="RegisterController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="510" y="375" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="ForgotPasswordController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="655" y="375" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="AccountController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="430" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="ManageUsersController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="430" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="CreateUserController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="355" y="430" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="ModifyUserController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="510" y="430" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="PageController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="655" y="430" width="140" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ===== VUES (colonne droite) ===== -->
+        <mxCell id="20" value="Vues (Views)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="840" y="175" width="580" height="885" as="geometry" />
+        </mxCell>
+
+        <!-- Authentification -->
+        <mxCell id="20a" value="Authentification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="855" y="210" width="550" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="login.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="865" y="248" width="255" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="register.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="865" y="290" width="255" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="forgot-password.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="248" width="255" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="reset-password.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="290" width="255" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- Utilisateur -->
+        <mxCell id="20b" value="Utilisateur" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="855" y="408" width="550" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="home.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="865" y="445" width="255" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="account.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="445" width="255" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- Gestion des Pages -->
+        <mxCell id="20c" value="Gestion des Pages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="855" y="536" width="550" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="CreatePage.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="865" y="572" width="255" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="ModificationPage.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="865" y="614" width="255" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="DeletePage.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="572" width="255" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="PublishPage.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="614" width="255" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- Administration -->
+        <mxCell id="20d" value="Administration (Admin)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="855" y="732" width="550" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="manage-users.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="865" y="768" width="255" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="create-user.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="865" y="808" width="255" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="33a" value="modify-user.php" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1135" y="768" width="255" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- ===== MODELES ===== -->
+        <mxCell id="33" value="Modèles (Models)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="560" width="780" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="34" value="User.php&#xa;idUser, lastname, firstname&#xa;email, pwd, isAdmin, createdAt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="597" width="175" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="35" value="Page.php&#xa;idPage, title, content, slug&#xa;status, author, createdAt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="235" y="597" width="175" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="Role.php&#xa;idRole, name" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="425" y="597" width="175" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="37" value="PageUserRoles.php&#xa;idUser, idPage, idRole" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="615" y="597" width="175" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ===== DEPOTS (REPOSITORIES) ===== -->
+        <mxCell id="38" value="Dépôts (Repositories)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="720" width="780" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="39" value="UserRepository.php&#xa;insert, update, delete, getAll&#xa;getById, getByEmail, checkPassword" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="45" y="757" width="175" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="40" value="PageRepository.php&#xa;insert, update, delete, getAll&#xa;getById, getBySlug, getByStatus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="235" y="757" width="175" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="41" value="RoleRepository.php&#xa;insert, update, delete&#xa;getAll, getById, getByName" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="425" y="757" width="175" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="42" value="PageUserRolesRepository.php&#xa;insert, delete&#xa;getByUserAndPage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="615" y="757" width="175" height="48" as="geometry" />
+        </mxCell>
+
+        <!-- ===== BASE DE DONNEES ===== -->
+        <mxCell id="43" value="Base de Données — MariaDB (app_cms)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="30" y="880" width="780" height="295" as="geometry" />
+        </mxCell>
+
+        <!-- Table Users -->
+        <mxCell id="44" value="&lt;b&gt;Users&lt;/b&gt;&lt;hr/&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;PK id_user&lt;br/&gt;lastname&lt;br/&gt;firstname&lt;br/&gt;email (UNIQUE)&lt;br/&gt;pwd (bcrypt)&lt;br/&gt;is_admin&lt;br/&gt;created_at&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="45" y="918" width="140" height="235" as="geometry" />
+        </mxCell>
+
+        <!-- Table Pages -->
+        <mxCell id="45" value="&lt;b&gt;Pages&lt;/b&gt;&lt;hr/&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;PK id_page&lt;br/&gt;title&lt;br/&gt;content&lt;br/&gt;slug&lt;br/&gt;status&lt;br/&gt;(draft/published/archived)&lt;br/&gt;FK author → Users&lt;br/&gt;created_at&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="198" y="918" width="140" height="235" as="geometry" />
+        </mxCell>
+
+        <!-- Table Roles -->
+        <mxCell id="46" value="&lt;b&gt;Roles&lt;/b&gt;&lt;hr/&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;PK id_role&lt;br/&gt;name&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="351" y="918" width="135" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Table PageUserRoles -->
+        <mxCell id="47" value="&lt;b&gt;PageUserRoles&lt;/b&gt;&lt;hr/&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;PK/FK id_user → Users&lt;br/&gt;PK/FK id_page → Pages&lt;br/&gt;PK/FK id_role → Roles&lt;br/&gt;(clé composite)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="499" y="918" width="145" height="145" as="geometry" />
+        </mxCell>
+
+        <!-- Table PasswordResetTokens -->
+        <mxCell id="48" value="&lt;b&gt;PasswordResetTokens&lt;/b&gt;&lt;hr/&gt;&lt;font style=&quot;font-size:9px;&quot;&gt;PK id&lt;br/&gt;FK id_user → Users&lt;br/&gt;(ON DELETE CASCADE)&lt;br/&gt;token (UNIQUE)&lt;br/&gt;created_at&lt;br/&gt;expires_at (+2h)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="657" y="918" width="140" height="165" as="geometry" />
+        </mxCell>
+
+        <!-- ===== FLECHES ===== -->
+
+        <!-- Navigateur → Point d'entrée -->
+        <mxCell id="50" value="HTTP Request" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d79b00;fontColor=#d79b00;fontSize=10;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="3" target="5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- index.php → Router.php -->
+        <mxCell id="51" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d79b00;" edge="1" source="6" target="7" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Router.php → Database.php -->
+        <mxCell id="51b" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d79b00;" edge="1" source="7" target="8" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Point d'entrée → Contrôleurs -->
+        <mxCell id="52" value="dispatch(route)" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#6c8ebf;fontColor=#6c8ebf;fontSize=10;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="5" target="9" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Contrôleurs → Vues -->
+        <mxCell id="53" value="render(view)" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#82b366;fontColor=#82b366;fontSize=10;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="9" target="20" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Contrôleurs → Modèles -->
+        <mxCell id="54" value="utilise" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#9673a6;fontColor=#9673a6;fontSize=10;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="9" target="33" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Modèles → Dépôts -->
+        <mxCell id="55" value="hydrate / retourne" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d79b00;fontColor=#d79b00;fontSize=10;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="33" target="38" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dépôts → Base de données -->
+        <mxCell id="56" value="PDO (requêtes SQL)" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#b85450;fontColor=#b85450;fontSize=10;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="38" target="43" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Vues → Navigateur (réponse HTML) -->
+        <mxCell id="57" value="HTML Response" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#82b366;fontColor=#82b366;fontSize=10;fontStyle=1;dashed=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="20" target="3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Database.php → Repositories (connexion PDO singleton) -->
+        <mxCell id="58" value="PDO connexion" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d79b00;fontColor=#d79b00;fontSize=9;dashed=1;" edge="1" source="8" target="38" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ===== LEGENDE ===== -->
+        <mxCell id="60" value="Légende" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;fontStyle=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="840" y="1085" width="580" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="61" value="Routage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="855" y="1118" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="62" value="Controllers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="950" y="1118" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="63" value="Views" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1045" y="1118" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="64" value="Models" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="1118" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="65" value="Repositories" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1235" y="1118" width="85" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="66" value="Database" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="1118" width="75" height="25" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
