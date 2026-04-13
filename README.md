@@ -2,7 +2,7 @@
 Projet CMS en PHP pour ESGI 3IWJ.
 
 # Crédits :
-| Collaborateurs                             |
+| Collaborateurs                            |
 |-------------------------------------------|
 | Yohan V.                                  |
 | Khouloud M.                               |
