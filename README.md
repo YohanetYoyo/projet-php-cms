@@ -6,6 +6,6 @@ Projet CMS en PHP pour ESGI 3IWJ.
 |-------------------------------------------|
 | Yohan V. (CRUD utilisateur)               |
 | Khouloud M.  [à remplir]                  |
-| Yvan G.                                   |
+| Yvan G.  [à remplir]                      |
 | Lyro (aspirant designer)                  |
 | Sprite (assistant de l'aspirant designer) |
