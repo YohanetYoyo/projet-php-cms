@@ -38,13 +38,13 @@ $router->add('POST','modify-user', 'ModifyUserController/update');
 $router->add('GET','create-page', 'PageController/showCreate');
 $router->add('POST','create-page', 'PageController/create');
 
-$router->add('GET','delete-page', 'PageController/showDelete');
+$router->add('POST','delete-page/showDelete', 'PageController/showDelete');
 $router->add('POST','delete-page', 'PageController/delete');
 
-$router->add('GET','modify-page', 'PageController/showUpdate');
+$router->add('POST','modify-page/showUpdate', 'PageController/showUpdate');
 $router->add('POST','modify-page', 'PageController/update');
 
-$router->add('GET','publish-page', 'PageController/showPublish');
+$router->add('POST','publish-page/showPublish', 'PageController/showPublish');
 $router->add('POST','publish-page', 'PageController/publish');
 
 $router->patch();

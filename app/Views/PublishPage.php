@@ -41,7 +41,7 @@ if (!isset($_SESSION['user'])) {
                 <p><?= substr(htmlspecialchars($page['content']), 0, 200) ?>...</p>
             </div>
 
-            <form method="post">
+            <form method="post" action="/publish-page">
                 <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
                 
                 <label for="status"><strong>Nouveau statut :</strong></label>

@@ -39,7 +39,7 @@ if (!isset($_SESSION['user'])) {
                         <th>Slug</th>
                         <th>Statut</th>
                         <th>Créée le</th>
-                        <th>Actions</th>
+                        <th colspan="3">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,9 +50,22 @@ if (!isset($_SESSION['user'])) {
                             <td><?= htmlspecialchars($page['status']) ?></td>
                             <td><?= htmlspecialchars($page['created_at']) ?></td>
                             <td>
-                                <a href="/modify-page?id=<?= htmlspecialchars($page['id_page']) ?>"><button type="button" class="button button--primary">Modifier</button></a>
-                                <a href="/delete-page?id=<?= htmlspecialchars($page['id_page']) ?>"><button type="button" class="button button--danger">Supprimer</button></a>
-                                <a href="/publish-page?id=<?= htmlspecialchars($page['id_page']) ?>"><button type="button" class="button button--primary">Publier</button></a>
+                                <form method="post" action="/modify-page/showUpdate">
+                                    <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
+                                    <button type="submit" class="button button--primary">Modifier</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="/delete-page/showDelete">
+                                    <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
+                                    <button type="submit" class="button button--danger">Supprimer</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" action="/publish-page/showPublish">
+                                    <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
+                                    <button type="submit" class="button button--primary">Publier</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -77,7 +90,7 @@ if (!isset($_SESSION['user'])) {
                     <th>Slug</th>
                     <th>Statut</th>
                     <th>Créée le</th>
-                    <th>Actions</th>
+                    <th colspan="3">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -87,15 +100,39 @@ if (!isset($_SESSION['user'])) {
                         <td><?= htmlspecialchars($page['slug']) ?></td>
                         <td><?= htmlspecialchars($page['status']) ?></td>
                         <td><?= htmlspecialchars($page['created_at']) ?></td>
+                        <?php if ($page['id_role'] == 1): ?>
                         <td>
-                            <?php if ($page['id_role'] == 1): ?>
-                            <a href="/modify-page?id=<?= htmlspecialchars($page['id_page']) ?>"><button type="button" class="button button--primary">Modifier</button></a>
-                            <a href="/delete-page?id=<?= htmlspecialchars($page['id_page']) ?>"><button type="button" class="button button--danger">Supprimer</button></a>
-                            <a href="/publish-page?id=<?= htmlspecialchars($page['id_page']) ?>"><button type="button" class="button button--primary">Publier</button></a>
-                            <?php elseif ($page['id_role'] == 2): ?>
-                            <a href="/modify-page?id=<?= htmlspecialchars($page['id_page']) ?>"><button type="button" class="button button--primary">Modifier</button></a>
+                            <form method="post" action="/modify-page/showUpdate">
+                                <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
+                                <button type="submit" class="button button--primary">Modifier</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" action="/delete-page/showDelete">
+                                <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
+                                <button type="submit" class="button button--danger">Supprimer</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" action="/publish-page/showPublish">
+                                <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
+                                <button type="submit" class="button button--primary">Publier</button>
+                            </form>
+                        </td>
+                        <?php elseif ($page['id_role'] == 2): ?>
+                            <td>
+                                <form method="post" action="/modify-page/showUpdate">
+                                    <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
+                                    <button type="submit" class="button button--primary">Modifier</button>
+                                </form>
+                            </td>
                             <?php elseif ($page['id_role'] == 3): ?>
-                            <a href="/page/<?= htmlspecialchars($page['slug']) ?>"><button type="button" class="button button--primary">Voir</button></a>
+                            <td>
+                                <form method="post" action="/delete-page/showDelete">
+                                    <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
+                                    <button type="submit" class="button button--danger">Supprimer</button>
+                                </form>
+                            </td>
                             <?php endif; ?>
                         </td>
                     </tr>

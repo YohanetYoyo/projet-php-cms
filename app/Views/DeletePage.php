@@ -45,7 +45,7 @@ if (!isset($_SESSION['user'])) {
                 <p style="color: red; font-weight: bold;">⚠️ ATTENTION : Cette action est irréversible !</p>
             </div>
 
-            <form method="post">
+            <form method="post" action="/delete-page">
                 <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
                 <button type="submit" class="button button--danger">
                     Supprimer la page

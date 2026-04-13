@@ -28,7 +28,7 @@ if (!isset($_SESSION['user'])) {
 
         if (!empty($page)) {
         ?>
-            <form method="post">
+            <form method="post" action="/modify-page">
                 <input type="hidden" name="id_page" value="<?= htmlspecialchars($page['id_page']) ?>">
 
                 <label for="title"><strong>Titre :</strong></label>

@@ -77,18 +77,7 @@ class PageController {
 
     // AFFICHER LA PAGE À MODIFIER
     public function showUpdate(): void {
-        $errors = [];
-        $page = null;
-
-        if (isset($_GET['id'])) {
-            $page = $this->pageRepository->getById((int)$_GET['id']);
-            if (!$page) {
-                $errors[] = "La page n'existe pas";
-            }
-        } else {
-            $errors[] = "Aucune page sélectionnée";
-        }
-
+        $page = $this->pageRepository->getById($_POST["id_page"]);
         require __DIR__ . '/../Views/ModificationPage.php';
     }
 
@@ -125,18 +114,7 @@ class PageController {
 
     // AFFICHER LA PAGE À SUPPRIMER
     public function showDelete(): void {
-        $errors = [];
-        $page = null;
-
-        if (isset($_GET['id'])) {
-            $page = $this->pageRepository->getById((int)$_GET['id']);
-            if (!$page) {
-                $errors[] = "La page n'existe pas";
-            }
-        } else {
-            $errors[] = "Aucune page sélectionnée";
-        }
-
+        $page = $this->pageRepository->getById($_POST["id_page"]);
         require __DIR__ . '/../Views/DeletePage.php';
     }
 
@@ -155,18 +133,7 @@ class PageController {
 
     // AFFICHER LA PAGE À PUBLIER/DÉPUBLIER
     public function showPublish(): void {
-        $errors = [];
-        $page = null;
-
-        if (isset($_GET['id'])) {
-            $page = $this->pageRepository->getById((int)$_GET['id']);
-            if (!$page) {
-                $errors[] = "La page n'existe pas";
-            }
-        } else {
-            $errors[] = "Aucune page sélectionnée";
-        }
-
+        $page = $this->pageRepository->getById($_POST["id_page"]);
         require __DIR__ . '/../Views/PublishPage.php';
     }
 
