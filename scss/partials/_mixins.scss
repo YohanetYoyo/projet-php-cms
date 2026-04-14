@@ -1,5 +1,6 @@
 @use "../partials/functions" as f;
 
+// Fonction pour styliser les éléments de formulaire (voir _form.scss)
 @mixin formStyling {
   background-color: var(--lightgrey);
   border: f.rem(2) solid var(--primary);

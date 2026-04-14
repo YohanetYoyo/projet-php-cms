@@ -1,5 +1,6 @@
 @use "sass:math";
 
+// Permet de convertir des pixels (px) en rem (root em), donc taille dynamique
 @function rem($pxVal){
   @return math.div($pxVal, 16) * 1rem;
 }

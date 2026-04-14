@@ -2,23 +2,26 @@
 @use "../partials/mixins" as m;
 
 @layer components {
+  // Empile les éléments verticalement avec un espace et prend seulement la largeur qu'il a besoin
   form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: f.rem(16);
     margin: auto;
     width: fit-content;
 
+    // Empile les éléments verticalement pour mettre label au-dessus
     div {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: f.rem(16);
     }
 
     label {
       text-align: center;
     }
 
+    // Padding inclut dans la largeur totale (box-sizing)
     input[type="text"], input[type="email"], input[type="password"], select {
       @include m.formStyling;
       box-sizing: border-box;
@@ -29,11 +32,13 @@
       @include m.formStyling;
     }
 
+    // Seulement pour les anchors avec un bouton dedans
     a:has(.button) {
       display: contents;
       text-decoration: underline;
     }
 
+    // Ligne de séparation grise et arrondie
     hr {
       width: 100%;
       border: 2px solid var(--grey);
@@ -41,11 +46,13 @@
     }
   }
 
+  // Form qui suit directement un form
   form + form {
     margin-top: f.rem(16);
     margin-bottom: f.rem(16);
   }
 
+  // Met éléments du radio sur la même ligne
   .radio {
     flex-direction: row;
     align-items: center;

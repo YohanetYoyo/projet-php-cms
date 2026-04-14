@@ -1,11 +1,15 @@
 @use "../partials/functions" as f;
 
 @layer components {
+  // Comme un bloc mais reste inline pour pas casser la hauteur et largeur
+  // Coins arrondis
+  // Texte en blanc par défaut
+  // Curseur en pointer quand on est dessus
+  // Taille de police 1rem, en semi-gras
   .button {
     display: inline-block;
     border-radius: f.rem(16);
     border: none;
-    box-shadow: 0 8px 16px 0 rgba(var(--primary), 0.6);
     color: var(--white);
     cursor: pointer;
     font-size: 1rem;

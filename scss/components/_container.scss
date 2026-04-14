@@ -1,6 +1,10 @@
+@use "../partials/functions" as f;
+
 @layer components {
+  // Centre le texte, automatise les marges et permet de gérer si le contenu dépasse en largeur
+  // ou longueur
   .container {
-    gap: 16px;
+    overflow: auto;
     margin: auto;
     text-align: center;
   }
