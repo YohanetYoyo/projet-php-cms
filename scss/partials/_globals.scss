@@ -40,6 +40,21 @@
     }
   }
 
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 f.rem(16);
+    }
+
+    form {
+      width: 100%;
+    }
+
+    table {
+      width: 100%;
+      font-size: f.rem(12);
+    }
+  }
+
   // Change la police et on applique couleur de fond et couleur de police
   body {
     font-family: fonts.$mainFont;
